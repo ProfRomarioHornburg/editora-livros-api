@@ -20,7 +20,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/login")
-//@CrossOrigin
+@CrossOrigin
 public class AutenticacaoController {
 
     @Autowired
@@ -33,11 +33,13 @@ public class AutenticacaoController {
             @RequestBody UsuarioDTO usuarioDTO
             ,HttpServletResponse response
     ) {
+        System.out.println("Teste");
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(
                         usuarioDTO.getEmail(),usuarioDTO.getSenha());
         Authentication authentication =
                 authenticationManager.authenticate(authenticationToken);
+        System.out.println("Teste2");
         if (authentication.isAuthenticated()) {
             Cookie cookie = jwtUtils.gerarTokenCookies(authentication);
             response.addCookie(cookie);

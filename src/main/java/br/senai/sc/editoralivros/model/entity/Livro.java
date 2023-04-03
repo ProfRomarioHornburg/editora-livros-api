@@ -52,6 +52,9 @@ public class Livro {
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Arquivo> arquivos;
 
+    public void setArquivos(List<Arquivo> arquivos) {
+        this.arquivos = (arquivos);
+    }
     public void setArquivos(ArrayList<MultipartFile> files) {
         try {
 //            files.forEach(file -> {

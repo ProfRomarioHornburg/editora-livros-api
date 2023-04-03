@@ -1,4 +1,4 @@
-package br.senai.sc.editoralivros.dto;
+package br.senai.sc.editoralivros.model.dto;
 
 import br.senai.sc.editoralivros.model.entity.Genero;
 import lombok.Data;

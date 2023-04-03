@@ -25,9 +25,14 @@ public class AutenticacaoFiltro extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if ("/login/auth".equals(request.getRequestURI())||
-                "/logout".equals(request.getRequestURI())||
-                "https://localhost:3000/login".equals(request.getRequestURI())) {
+        if (       "/login/auth".                       equals(request.getRequestURI())
+                || "/logout".                           equals(request.getRequestURI())
+                || "http://localhost:3000/login".       equals(request.getRequestURI())
+                || "https://localhost:3000/login".      equals(request.getRequestURI())
+                || "http://editorasenaiweb:3000/login". equals(request.getRequestURI())
+                || "https://editorasenaiweb:3000/login".equals(request.getRequestURI())
+                || "http://nginx:80/login".             equals(request.getRequestURI())
+                || "https://nginx:443/login".           equals(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }

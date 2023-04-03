@@ -1,9 +1,7 @@
 package br.senai.sc.editoralivros.util;
 
-import br.senai.sc.editoralivros.dto.LivroDTO;
-import br.senai.sc.editoralivros.dto.LivroDTOCadastro;
+import br.senai.sc.editoralivros.model.dto.LivroDTOCadastro;
 import br.senai.sc.editoralivros.model.entity.Livro;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;

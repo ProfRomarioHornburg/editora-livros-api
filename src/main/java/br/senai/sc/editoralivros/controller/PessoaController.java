@@ -1,9 +1,8 @@
 package br.senai.sc.editoralivros.controller;
 
-import br.senai.sc.editoralivros.dto.PessoaDTO;
+import br.senai.sc.editoralivros.model.dto.PessoaDTO;
 import br.senai.sc.editoralivros.model.entity.Genero;
 import br.senai.sc.editoralivros.model.entity.Pessoa;
-import br.senai.sc.editoralivros.model.entity.Status;
 import br.senai.sc.editoralivros.model.service.PessoaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -11,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.Authentication;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
