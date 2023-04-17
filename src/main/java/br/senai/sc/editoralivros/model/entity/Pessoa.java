@@ -1,5 +1,7 @@
 package br.senai.sc.editoralivros.model.entity;
 
+import br.senai.sc.editoralivros.model.enums.Genero;
+import br.senai.sc.editoralivros.model.enums.StatusChat;
 import lombok.*;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -7,14 +9,12 @@ import lombok.*;
 //import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_pessoa")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
 public class Pessoa {
 
     @Id
@@ -36,5 +36,8 @@ public class Pessoa {
     @Enumerated(value = EnumType.STRING)
     @Column(length = 15, nullable = false)
     private Genero genero;
+
+    @Enumerated(value = EnumType.STRING)
+    private StatusChat statusChat;
 
 }

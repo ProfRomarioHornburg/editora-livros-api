@@ -1,6 +1,6 @@
 package br.senai.sc.editoralivros.security.service;
 
-import br.senai.sc.editoralivros.security.users.UserGoogle;
+import br.senai.sc.editoralivros.security.model.entity.UserGoogle;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.user.OAuth2User;

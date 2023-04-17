@@ -1,7 +1,8 @@
-package br.senai.sc.editoralivros.model.service;
+package br.senai.sc.editoralivros.service;
 
 import br.senai.sc.editoralivros.model.entity.Pessoa;
 import br.senai.sc.editoralivros.repository.PessoaRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;

@@ -1,9 +1,9 @@
 package br.senai.sc.editoralivros.controller;
 
 import br.senai.sc.editoralivros.model.dto.PessoaDTO;
-import br.senai.sc.editoralivros.model.entity.Genero;
+import br.senai.sc.editoralivros.model.enums.Genero;
 import br.senai.sc.editoralivros.model.entity.Pessoa;
-import br.senai.sc.editoralivros.model.service.PessoaService;
+import br.senai.sc.editoralivros.service.PessoaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;

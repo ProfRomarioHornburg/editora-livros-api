@@ -1,11 +1,10 @@
-package br.senai.sc.editoralivros.model.service;
+package br.senai.sc.editoralivros.service;
 
 import br.senai.sc.editoralivros.model.entity.Autor;
 import br.senai.sc.editoralivros.model.entity.Livro;
-import br.senai.sc.editoralivros.model.entity.Status;
+import br.senai.sc.editoralivros.model.enums.Status;
 import br.senai.sc.editoralivros.repository.LivroRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -36,6 +35,7 @@ public class LivroService {
     }
 
     public List<Livro> findAll(){
+        System.out.println("findAll Service");
         return livroRepository.findAll();
     }
 

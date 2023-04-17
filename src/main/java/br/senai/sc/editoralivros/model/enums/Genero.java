@@ -1,4 +1,4 @@
-package br.senai.sc.editoralivros.model.entity;
+package br.senai.sc.editoralivros.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

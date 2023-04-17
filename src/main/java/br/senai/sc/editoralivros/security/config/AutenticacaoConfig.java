@@ -1,6 +1,6 @@
-package br.senai.sc.editoralivros.security;
+package br.senai.sc.editoralivros.security.config;
 
-import br.senai.sc.editoralivros.security.jwt.AutenticacaoFiltro;
+import br.senai.sc.editoralivros.security.filter.AutenticacaoFiltro;
 import br.senai.sc.editoralivros.security.service.GoogleService;
 import br.senai.sc.editoralivros.security.service.JpaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,9 +64,15 @@ public class AutenticacaoConfig {
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
-                .antMatchers("/login/auth","/login","/login/teste").permitAll()
+                .antMatchers("/editora-livros-api/login/auth"
+                        ,"/editora-livros-api/login"
+                        ,"/api-docs/**"
+                        ,"/swagger.html"
+                        ,"/swagger-ui/**"
+//                        ,"/editora-livros-api/**"
+                ).permitAll()
 //                .antMatchers("/login").permitAll()
-                .antMatchers(HttpMethod.POST,"/editora-livros-api/livro").hasAuthority("Autor")
+//                .antMatchers(HttpMethod.POST,"/editora-livros-api/livro").hasAuthority("Autor")
                 .anyRequest().authenticated();
 //        http.exceptionHandling()
 //                        .accessDeniedPage("/login");
@@ -106,35 +112,35 @@ public class AutenticacaoConfig {
 //                .passwordParameter("senha")
 //                .usernameParameter("email")
 //                .permitAll();
-        http.oauth2Login()
-                .loginPage("http://localhost:3000/login")
-                .userInfoEndpoint()
-                .userService(googleService)
-                .and()
-                .successHandler(new AuthenticationSuccessHandler() {
-                    @Override
-                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-                        try {
-                            UserDetails userJpa = jpaService.loadUserByUsername(oAuth2User.getAttribute("email"));
-                            response.sendRedirect("http://localhost:3000/livros");
-                        } catch (UsernameNotFoundException e) {
-                            System.out.printf("Usuário não encontrado");
-                            response.sendRedirect("http://localhost:3000/login");
-                        }
-                    }
-                })
-                .permitAll();
+//        http.oauth2Login()
+//                .loginPage("http://localhost:3000/login")
+//                .userInfoEndpoint()
+//                .userService(googleService)
+//                .and()
+//                .successHandler(new AuthenticationSuccessHandler() {
+//                    @Override
+//                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+//                        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+//                        try {
+//                            UserDetails userJpa = jpaService.loadUserByUsername(oAuth2User.getAttribute("email"));
+//                            response.sendRedirect("http://localhost:3000/livros");
+//                        } catch (UsernameNotFoundException e) {
+//                            System.out.printf("Usuário não encontrado");
+//                            response.sendRedirect("http://localhost:3000/login");
+//                        }
+//                    }
+//                })
+//                .permitAll();
 //        http.apply(new AutenticacaoFiltro(jpaService);
         http.logout()
 //                .logoutSuccessUrl("http://localhost:3000/home")
 //                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID", "jwt")
+                .deleteCookies("jwt", "user")
                 .permitAll();
         http.sessionManagement().sessionCreationPolicy(
                         SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(
-                        new AutenticacaoFiltro(jpaService),
+                        new AutenticacaoFiltro(),
                         UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

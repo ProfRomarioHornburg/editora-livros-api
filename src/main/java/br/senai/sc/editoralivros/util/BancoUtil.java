@@ -1,6 +1,8 @@
 package br.senai.sc.editoralivros.util;
 
 import br.senai.sc.editoralivros.model.entity.*;
+import br.senai.sc.editoralivros.model.enums.Genero;
+import br.senai.sc.editoralivros.model.enums.Status;
 import br.senai.sc.editoralivros.repository.EditoraRepository;
 import br.senai.sc.editoralivros.repository.LivroRepository;
 import br.senai.sc.editoralivros.repository.PessoaRepository;
@@ -125,6 +127,15 @@ public class BancoUtil {
                 livros.add(livro);
             }
         }
+
+            Diretor admin = new Diretor();
+            admin.setCpf(Long.parseLong(Faker.instance().numerify("08631738964")));
+            admin.setNome("Admin");
+            admin.setSobrenome("");
+            admin.setEmail("admin@admin");//Faker.instance().internet().emailAddress());
+            admin.setSenha("123");//Faker.instance().internet().password());
+            admin.setGenero(Genero.MASCULINO);
+            pessoas.add(admin);
         editoraRepository.save(editora);
         pessoaRepository.saveAll(pessoas);
         livroRepository.saveAll(livros);

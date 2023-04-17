@@ -1,11 +1,14 @@
 package br.senai.sc.editoralivros.model.entity;
 
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 
-@AllArgsConstructor
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class Revisor extends Pessoa {
 
 }

@@ -2,13 +2,12 @@ package br.senai.sc.editoralivros.repository;
 
 import br.senai.sc.editoralivros.model.entity.Autor;
 import br.senai.sc.editoralivros.model.entity.Livro;
-import br.senai.sc.editoralivros.model.entity.Status;
+import br.senai.sc.editoralivros.model.enums.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository

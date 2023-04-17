@@ -1,6 +1,7 @@
 package br.senai.sc.editoralivros.model.dto;
 
 import br.senai.sc.editoralivros.model.entity.*;
+import br.senai.sc.editoralivros.model.enums.Status;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package br.senai.sc.editoralivros.model.entity;
 
+import br.senai.sc.editoralivros.model.enums.Status;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 

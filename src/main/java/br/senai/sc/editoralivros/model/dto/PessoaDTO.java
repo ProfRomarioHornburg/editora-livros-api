@@ -1,9 +1,7 @@
 package br.senai.sc.editoralivros.model.dto;
 
-import br.senai.sc.editoralivros.model.entity.Genero;
+import br.senai.sc.editoralivros.model.enums.Genero;
 import lombok.Data;
-import lombok.Getter;
-import javax.validation.constraints.NotBlank;
 
 @Data
 public class PessoaDTO {
