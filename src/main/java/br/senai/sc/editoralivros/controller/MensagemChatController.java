@@ -9,7 +9,9 @@ import br.senai.sc.editoralivros.service.MensagemChatService;
 import br.senai.sc.editoralivros.service.PessoaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +21,18 @@ public class MensagemChatController {
     private final MensagemChatService mensagemChatService;
     private final LivroService livroService;
     private final PessoaService pessoaService;
+
+
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
+
+    public void atualizarMensagemChat(MensagemChat mensagemChat) {
+        // atualiza o livro no banco de dados
+        mensagemChatService.save(mensagemChat);
+
+        // envia a mensagem com as atualizações para o tópico correspondente
+        messagingTemplate.convertAndSend("/livro/"+mensagemChat.getLivro().getIsbn(), mensagemChat);
+    }
 
     @GetMapping("/{isbn}")
     public ResponseEntity<?> mensagensLivro(@PathVariable(value = "isbn") Long isbn) {

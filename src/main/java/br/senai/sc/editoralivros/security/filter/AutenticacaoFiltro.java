@@ -75,12 +75,14 @@ public class AutenticacaoFiltro extends OncePerRequestFilter {
     }
 
     private void validarUrl(String url) throws ExUrlNaoPermitida {
-        if (!(url.equals("/editora-livros-api/login/auth") ||
-                url.equals("/editora-livros-api/logout") ||
-                url.equals("http://localhost:3000/login") ||
-                url.equals("https://localhost:3000/login") ||
-                url.startsWith("/api-docs") ||
-                url.startsWith("/swagger"))) {
+        if (!(url.equals("/editora-livros-api/login/auth")
+                || url.equals("/editora-livros-api/logout")
+                || url.equals("http://localhost:3000/login")
+                || url.equals("https://localhost:3000/login")
+                || url.startsWith("/api-docs")
+                || url.startsWith("/swagger")
+//                || url.startsWith("/chat")
+        )) {
             System.out.println("URL não permitida: " + url);
             throw new ExUrlNaoPermitida();
         }

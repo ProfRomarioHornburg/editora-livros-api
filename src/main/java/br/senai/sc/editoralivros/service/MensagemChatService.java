@@ -6,6 +6,7 @@ import br.senai.sc.editoralivros.repository.MensagemChatRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MensagemChatService {
@@ -22,5 +23,9 @@ public class MensagemChatService {
 
     public List<MensagemChat> findAllByLivro(Livro livro) {
         return mensagemChatRepository.findAllByLivro(livro);
+    }
+
+    public Optional<MensagemChat> findById(Long id) {
+        return mensagemChatRepository.findById(id);
     }
 }

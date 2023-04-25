@@ -24,6 +24,7 @@ import java.util.Optional;
 public class LivroController {
 
     private LivroService livroService;
+    private final LivroUtil livroUtil= new LivroUtil();
 
     @GetMapping("/{pesquisa}")
     public ResponseEntity<List<Livro>> findByPesquisa(@PathVariable(value = "pesquisa") String pesquisa) {
@@ -86,14 +87,13 @@ public class LivroController {
             @RequestParam("arquivos") ArrayList<MultipartFile> files) {
         System.out.println(livroJson);
         System.out.println(files);
-        LivroUtil util = new LivroUtil();
-        Livro livro = util.convertJsonToModel(livroJson);
+        Livro livro = livroUtil.convertJsonToModel(livroJson);
         if (livroService.existsById(livro.getIsbn())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(
                     "Há um livro com o ISBN " + livro.getIsbn() + " cadastrado.");
         }
         System.out.println(files);
-        livro.setArquivos(files);
+        livro.setArquivos(livroUtil.convertMultiPartFilesToArquivos(files));
         livro.setStatus(Status.AGUARDANDO_REVISAO);
         return ResponseEntity.status(HttpStatus.OK).body(
                 livroService.save(livro));
@@ -128,7 +128,8 @@ public class LivroController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(
                     "Há um livro com o ISBN " + livro.getIsbn() + " cadastrado.");
         }
-        livro.setArquivos(files);
+
+        livro.setArquivos(livroUtil.convertMultiPartFilesToArquivos(files));
         return ResponseEntity.status(HttpStatus.OK).body(
                 livroService.save(livro));
     }

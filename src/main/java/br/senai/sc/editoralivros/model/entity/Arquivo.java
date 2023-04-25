@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_arquivos")
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Getter @Setter

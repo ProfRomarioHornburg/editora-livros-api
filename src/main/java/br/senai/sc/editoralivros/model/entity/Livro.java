@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "tb_livros")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Data
 public class Livro {
 
     @Id
@@ -50,37 +50,10 @@ public class Livro {
     @ManyToOne
     private Editora editora;
 
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Arquivo> arquivos;
 
     public void setArquivos(List<Arquivo> arquivos) {
         this.arquivos = (arquivos);
-    }
-    public void setArquivos(ArrayList<MultipartFile> files) {
-        try {
-//            files.forEach(file -> {
-//                Arquivo arquivo = new Arquivo();
-//                arquivo.setNome(file.getOriginalFilename());
-//                arquivo.setTipo(file.getContentType());
-//                try {
-//                    arquivo.setDados(file.getBytes());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                arquivo.setLivro(this);
-//                this.arquivos.add(arquivo);
-//            });
-            ArrayList<Arquivo> arquivos = new ArrayList<>();
-            for (MultipartFile file : files) {
-                Arquivo arquivo = new Arquivo();
-                arquivo.setNome(file.getOriginalFilename());
-                arquivo.setTipo(file.getContentType());
-                arquivo.setDados(file.getBytes());
-                arquivos.add(arquivo);
-            }
-            this.arquivos = arquivos;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 }
