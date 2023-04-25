@@ -9,9 +9,7 @@ import br.senai.sc.editoralivros.service.MensagemChatService;
 import br.senai.sc.editoralivros.service.PessoaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,8 +28,8 @@ public class MensagemChatController {
     @PostMapping()
     public ResponseEntity<?> salvarMensagem(@RequestBody MensagemChatDTO mensagemChatDTO) {
         MensagemChat mensagemChat = new MensagemChat();
-        mensagemChat.setLivro(livroService.findById(mensagemChatDTO.getLivro()).get());
-        mensagemChat.setRemetente(pessoaService.findById(mensagemChatDTO.getRemetente()).get());
+        mensagemChat.setLivro(livroService.findById(mensagemChatDTO.getLivro().getIsbn()).get());
+        mensagemChat.setRemetente(pessoaService.findById(mensagemChatDTO.getRemetente().getCpf()).get());
         mensagemChat.setMensagem(mensagemChatDTO.getMensagem());
         return ResponseEntity.ok(mensagemChatService.save(mensagemChat));
     }

@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Getter
 public class MensagemChatDTO {
-    private Long livro;
-    private Long remetente;
+    private Livro livro;
+    private Pessoa remetente;
     private String mensagem;
 }
