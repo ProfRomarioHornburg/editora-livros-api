@@ -1,12 +1,7 @@
 package br.senai.sc.editoralivros.model.entity;
 
 import br.senai.sc.editoralivros.model.enums.Genero;
-import br.senai.sc.editoralivros.model.enums.StatusChat;
 import lombok.*;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
 
@@ -36,8 +31,5 @@ public class Pessoa {
     @Enumerated(value = EnumType.STRING)
     @Column(length = 15, nullable = false)
     private Genero genero;
-
-    @Enumerated(value = EnumType.STRING)
-    private StatusChat statusChat;
 
 }

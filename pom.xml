@@ -53,11 +53,6 @@
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.7.0</version>
         </dependency>
-<!--        WebSocket-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
-        </dependency>
 <!--        Validação-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

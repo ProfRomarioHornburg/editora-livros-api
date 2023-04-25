@@ -12,7 +12,6 @@ import java.util.Optional;
 public class MensagemChatService {
     private final MensagemChatRepository mensagemChatRepository;
 
-
     public MensagemChatService(MensagemChatRepository mensagemChatRepository) {
         this.mensagemChatRepository = mensagemChatRepository;
     }
@@ -25,7 +24,4 @@ public class MensagemChatService {
         return mensagemChatRepository.findAllByLivro(livro);
     }
 
-    public Optional<MensagemChat> findById(Long id) {
-        return mensagemChatRepository.findById(id);
-    }
 }

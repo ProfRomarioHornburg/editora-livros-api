@@ -22,18 +22,6 @@ public class MensagemChatController {
     private final LivroService livroService;
     private final PessoaService pessoaService;
 
-
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
-
-    public void atualizarMensagemChat(MensagemChat mensagemChat) {
-        // atualiza o livro no banco de dados
-        mensagemChatService.save(mensagemChat);
-
-        // envia a mensagem com as atualizações para o tópico correspondente
-        messagingTemplate.convertAndSend("/livro/"+mensagemChat.getLivro().getIsbn(), mensagemChat);
-    }
-
     @GetMapping("/{isbn}")
     public ResponseEntity<?> mensagensLivro(@PathVariable(value = "isbn") Long isbn) {
         return ResponseEntity.ok(mensagemChatService.findAllByLivro(livroService.findById(isbn).get()));

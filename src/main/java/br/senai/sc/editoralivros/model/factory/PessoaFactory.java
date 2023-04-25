@@ -17,7 +17,6 @@ public class PessoaFactory {
                 diretor.setEmail(pessoa.getEmail());
                 diretor.setSenha(pessoa.getSenha());
                 diretor.setGenero(pessoa.getGenero());
-                diretor.setStatusChat(pessoa.getStatusChat());
                 return diretor;
             }
             case "Revisor" -> {
@@ -28,7 +27,6 @@ public class PessoaFactory {
                 revisor.setEmail(pessoa.getEmail());
                 revisor.setSenha(pessoa.getSenha());
                 revisor.setGenero(pessoa.getGenero());
-                revisor.setStatusChat(pessoa.getStatusChat());
                 return revisor;
             }
             case "Autor" -> {
@@ -39,7 +37,6 @@ public class PessoaFactory {
                 autor.setEmail(pessoa.getEmail());
                 autor.setSenha(pessoa.getSenha());
                 autor.setGenero(pessoa.getGenero());
-                autor.setStatusChat(pessoa.getStatusChat());
                 return autor;
             }
         }

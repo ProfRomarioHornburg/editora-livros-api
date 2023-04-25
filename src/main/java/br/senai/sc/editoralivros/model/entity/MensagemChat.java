@@ -21,14 +21,5 @@ public class MensagemChat {
     @ManyToOne
     @JoinColumn(name = "remetente_cpf")
     private Pessoa remetente;
-//    @ManyToOne
-//    @JoinColumn(name = "destinatario_cpf")
-//    private Pessoa destinatario;
     private String mensagem;
-//    @ManyToOne
-//    @JoinColumn(name = "anexo_id")
-//    private Arquivo anexo;
-//    private Date data;
-//    @Enumerated(EnumType.STRING)
-//    private StatusMensagem status;
 }
