@@ -138,7 +138,6 @@ public class AutenticacaoConfig {
                 .deleteCookies("jwt", "user")
                 .permitAll();
         http.sessionManagement().sessionCreationPolicy(
-                        SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(
                         new AutenticacaoFiltro(),
                         UsernamePasswordAuthenticationFilter.class);
